@@ -1,7 +1,7 @@
 {
 	"manifest_version": 2,
-  "name": "Google Translate for Slack",
-	"short_name": "Google Translate for Slack",
+  "name": "Translate for Slack",
+	"short_name": "Translate for Slack",
 	"description": "Translate Slack message directly in the Slack web app.",
 	"version": "0.0.1",
 	"offline_enabled": false,

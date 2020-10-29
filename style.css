@@ -15,6 +15,7 @@
   cursor: default;
   padding-left: 10px;
   border-left: 3px solid rgb(255 255 255 / 0.7);
+  white-space: pre-line;
 }
 
 .___sgt-translate-button[data-translate-done]:hover {

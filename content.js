@@ -1,7 +1,7 @@
 const sgtTranslateMessage = (e) => {
-  let sourceText = e.target.getAttribute('data-translate-message')
+  let sourceText = e.target.dataset.translateMessage
   sourceText = sourceText.replace(/\(edited\)/g, '')
-  sourceText = encodeURI(sourceText)
+  sourceText = encodeURIComponent(sourceText)
   const fromLang = 'th'
   const toLang = 'en'
   const baseUrl = 'https://translate.googleapis.com/translate_a/single'
@@ -9,8 +9,8 @@ const sgtTranslateMessage = (e) => {
   fetch(url).then((response) => {
     response.json()
       .then(data => {
-        e.target.textContent = data[0][0][0]
-        e.target.setAttribute('data-translate-done', true)
+        e.target.textContent = data[0].map(e => e[0]).join(' ')
+        e.target.dataset.translateDone = true
       })
     })
 }
@@ -19,14 +19,14 @@ const init = (eleName) => {
   const primaryView = document.querySelector(eleName)
   if (!primaryView) return setTimeout(() => init(eleName), 3000)
   const observer = new MutationObserver(() => {
-    const messages = primaryView.querySelectorAll('.p-rich_text_section')
+    const messages = primaryView.querySelectorAll('.p-rich_text_block')
     messages.forEach((message) => {
-      if (message.getAttribute('data-translate')) return
-      message.setAttribute('data-translate', true)
+      if (message.dataset.translate) return
+      message.dataset.translate = true
       if (!/[\u0e00-\u0e7f]/.test(message.textContent)) return
       const translateButton = document.createElement('div')
       translateButton.className = '___sgt-translate-button'
-      translateButton.setAttribute('data-translate-message', message.textContent)
+      translateButton.dataset.translateMessage = message.innerText
       translateButton.addEventListener('click', (e) => sgtTranslateMessage(e))
       translateButton.textContent = '翻譯年糕'
       message.appendChild(translateButton)
