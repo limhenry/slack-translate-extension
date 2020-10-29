@@ -1,0 +1,22 @@
+.___sgt-translate-button {
+  margin: 4px 0;
+  opacity: 0.7;
+  font-size: 0.9em;
+  cursor: pointer;
+}
+
+.___sgt-translate-button:hover {
+  text-decoration: underline;
+}
+
+.___sgt-translate-button[data-translate-done] {
+  margin: 6px 0;
+  font-size: 1em; 
+  cursor: default;
+  padding-left: 10px;
+  border-left: 3px solid rgb(255 255 255 / 0.7);
+}
+
+.___sgt-translate-button[data-translate-done]:hover {
+  text-decoration: none;
+}

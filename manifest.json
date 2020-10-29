@@ -1,0 +1,28 @@
+{
+	"manifest_version": 2,
+  "name": "Google Translate for Slack",
+	"short_name": "Google Translate for Slack",
+	"description": "Translate Slack message directly in the Slack web app.",
+	"version": "0.0.1",
+	"offline_enabled": false,
+	"content_scripts": [
+		{
+			"matches": [
+				"https://app.slack.com/client/*"
+			],
+			"js": [
+				"content.js"
+			],
+			"css": [
+				"style.css"
+			],
+			"run_at": "document_idle",
+			"all_frames": false
+		}
+	],
+	"icons": {
+		"16": "icons/16.png",
+		"48": "icons/48.png",
+    "128": "icons/128.png"
+  }
+}
