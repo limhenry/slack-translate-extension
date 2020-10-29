@@ -1,0 +1,130 @@
+* {
+  box-sizing: border-box;
+}
+html,
+body {
+  margin: 0;
+  font-family: Roboto, system-ui, sans-serif;
+  color: #e8eaed;
+  background-color: #202125;
+  font-size: 14px;
+  padding-bottom: 24px;
+}
+header {
+  background-color: #292a2d;
+  height: 56px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  display: flex;
+  align-items: center;
+  padding: 0 16px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+}
+header img {
+  height: 40px;
+  margin-right: 8px;
+}
+header h1 {
+  letter-spacing: .25px;
+  font-weight: 400;
+  font-size: 16px;
+}
+.content {
+  padding-top: 56px;
+}
+.section {
+  max-width: 680px;
+  width: 100%;
+  margin: auto;
+  padding-bottom: 8px;
+}
+.section h2 {
+  font-size: 14px;
+  font-weight: 500;
+  margin: 20px 0 12px;
+  padding: 8px 0 4px;
+}
+.section .card {
+  background-color: #292a2d;
+  border-radius: 4px;
+  box-shadow: rgba(0, 0, 0, 0.3) 0px 1px 2px 0px, rgba(0, 0, 0, 0.15) 0px 1px 3px 1px;
+}
+.section .card .card-row {
+  min-height: 48px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  display: flex;
+  align-items: center;
+  padding: 0 20px;
+  font-size: 13px;
+}
+.section .card a.card-row {
+  text-decoration: none;
+  color: #e8eaed;
+}
+.section .card .card-row .flex {
+  flex: 1;
+}
+.section .card .card-row .more {
+  height: 20px;
+}
+.section .card .card-row input {
+  height: 25px;
+  background-color: transparent;
+  outline: none;
+  border: none;
+  border-bottom: 1px solid rgb(154, 160, 166);
+  color: #e8eaed;
+  caret-color: #8ab4f8;
+  position: relative;
+  min-width: 200px;
+  font-family: Roboto, system-ui, sans-serif;
+  font-size: 13px;
+}
+.section .card .card-row input:focus {
+  border-bottom: 1px solid #8ab4f8;
+}
+.section .card .card-row select {
+  -webkit-appearance: none;
+  min-width: 200px;
+  padding: 6px 20px 6px 8px;
+  color: #e8eaed;
+  border: none;
+  border-radius: 4px;
+  background: url(./icons/arrow_down.svg) calc(100% - 8px) center no-repeat;
+  background-size: 10px;
+  background-color: #0000004d;
+  height: 32px;
+  font-family: Roboto, system-ui, sans-serif;
+  font-size: 13px;
+}
+.section .card .card-row button {
+  height: 32px;
+  background: transparent;
+  color: #8ab4f8;
+  font-weight: 500;
+  border: 1px solid#5f6368;
+  border-radius: 4px;
+  padding: 0 16px;
+  cursor: pointer;
+}
+.section .card .card-row button:hover {
+  background: #8ab4f814
+}
+.section .card .card-row:last-child {
+  border-bottom: none;
+}
+.section .card .card-row.about {
+  min-height: 64px;
+  font-size: 20px;
+}
+.section .card .card-row.about .version {
+  font-size: 13px;
+  color: #9aa0a6;
+  margin-top: 2px;
+}
+.section .card .card-row.about img {
+  height: 44px;
+  margin-right: 10px;
+}

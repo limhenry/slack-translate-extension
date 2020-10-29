@@ -1,0 +1,98 @@
+<html>
+  <meta charset="UTF-8">
+  <title>Settings - Translate for Slack</title>
+  <link rel="stylesheet" href="./options.css">
+  <header>
+    <img src="./icons/48.png" />
+    <h1>Settings - Translate for Slack</h1>
+  </header>
+  <div class="content">
+    <div class="section">
+      <h2 class="header">Translate Settings</h2>
+      <div class="card">
+        <div class="card-row">
+          <div class="flex">Translate From</div>
+          <select name="translate-from" id="translate-from-dropdown">
+            <option value="auto" id="from-auto" selected>Auto Detect</option>
+          </select>
+        </div>
+        <div class="card-row">
+          <div class="flex">Translate To</div>
+          <select name="translate-to" id="translate-to-dropdown"></select>
+        </div>
+      </div>
+    </div>
+    <div class="section">
+      <h2 class="header">Advanced Settings</h2>
+      <div class="card">
+        <div class="card-row">
+          <div class="flex">Translate Button Label (Optional)</div>
+          <input id="translate-label" type="text" />
+        </div>
+        <div class="card-row">
+          <div class="flex">Only Show Translate Button If Regex Is Matched (Optional)</div>
+          <input id="translate-regex" type="text" />
+        </div>
+      </div>
+    </div>
+    <div class="section">
+      <h2 class="header">Reset Settings</h2>
+      <div class="card">
+        <div class="card-row">
+          <div class="flex">Restore settings to their original defaults</div>
+          <button id="translate-reset">Reset</button>
+        </div>
+      </div>
+    </div>
+    <div class="section">
+      <h2 class="header">About Translate for Slack</h2>
+      <div class="card">
+        <div class="card-row about">
+          <img src="./icons/48.png">
+          <div>
+            <div>Translate for Slack</div>
+            <div class="version">Version 0.0.1</div>
+          </div>
+        </div>
+        <a
+          class="card-row"
+          href="https://chrome.google.com/webstore/detail/translate-for-slack/dhadelkabablecjhglpdnjbigkcdfdlm"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <div class="flex">Rate Translate for Slack on Chrome Web Store</div>
+          <img class="more" src="./icons/more.svg" />
+        </a>
+        <a
+          class="card-row"
+          href="https://twitter.com/henrylim96"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <div class="flex">Follow Henry Lim on Twitter</div>
+          <img class="more" src="./icons/more.svg" />
+        </a>
+        <a
+          class="card-row"
+          href="https://www.paypal.me/henrylim96"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <div class="flex">Donate to Henry Lim via PayPal</div>
+          <img class="more" src="./icons/more.svg" />
+        </a>
+        <a
+          class="card-row"
+          href="https://github.com/limhenry/slack-translate-extension"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <div class="flex">View Source Code on GitHub</div>
+          <img class="more" src="./icons/more.svg" />
+        </a>
+      </div>
+    </div>
+  </div>
+</html>
+
+<script src="./options.js"></script>

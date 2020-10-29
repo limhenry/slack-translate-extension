@@ -1,9 +1,11 @@
+let translateConfig = {}
+
 const sgtTranslateMessage = (e) => {
   let sourceText = e.target.dataset.translateMessage
   sourceText = sourceText.replace(/\(edited\)/g, '')
   sourceText = encodeURIComponent(sourceText)
-  const fromLang = 'th'
-  const toLang = 'en'
+  const fromLang = translateConfig.translateFrom
+  const toLang = translateConfig.translateTo
   const baseUrl = 'https://translate.googleapis.com/translate_a/single'
   const url = `${baseUrl}?client=gtx&sl=${fromLang}&tl=${toLang}&dt=t&q=${sourceText}`
   fetch(url).then((response) => {
@@ -16,19 +18,24 @@ const sgtTranslateMessage = (e) => {
 }
 
 const init = (eleName) => {
-  const primaryView = document.querySelector(eleName)
-  if (!primaryView) return setTimeout(() => init(eleName), 3000)
+  const view = document.querySelector(eleName)
+  if (!view) return setTimeout(() => init(eleName), 3000)
   const observer = new MutationObserver(() => {
-    const messages = primaryView.querySelectorAll('.p-rich_text_block')
+    const messages = view.querySelectorAll('.p-rich_text_block')
     messages.forEach((message) => {
       if (message.dataset.translate) return
       message.dataset.translate = true
-      if (!/[\u0e00-\u0e7f]/.test(message.textContent)) return
+      if (!message.textContent) return
+      try {
+        const match = translateConfig.translateRegex.match(new RegExp('^/(.*?)/([gimy]*)$'))
+        const regex = new RegExp(match[1], match[2])
+        if (!regex.test(message.textContent)) return
+      } catch (e) {}
       const translateButton = document.createElement('div')
       translateButton.className = '___sgt-translate-button'
       translateButton.dataset.translateMessage = message.innerText
       translateButton.addEventListener('click', (e) => sgtTranslateMessage(e))
-      translateButton.textContent = '翻譯年糕'
+      translateButton.textContent = translateConfig.translateLabel || 'Translate'
       message.appendChild(translateButton)
     })
   })
@@ -36,8 +43,16 @@ const init = (eleName) => {
     childList: true,
     subtree: true
   }
-  observer.observe(primaryView, observerConfig)
+  observer.observe(view, observerConfig)
 }
 
-init('.p-workspace__primary_view')
-init('.p-workspace__secondary_view')
+chrome.storage.sync.get({
+  translateFrom: 'auto',
+  translateTo: 'en',
+  translateLabel: 'Translate',
+  translateRegex: false
+}, (e) => {
+  translateConfig = e
+  init('.p-workspace__primary_view')
+  init('.p-workspace__secondary_view')
+})
