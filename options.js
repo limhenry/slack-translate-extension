@@ -163,7 +163,7 @@ translateReset.addEventListener('click', () => {
   chrome.storage.sync.set({
     translateFrom: 'auto',
     translateTo: 'en',
-    translateLabel: '',
+    translateLabel: 'View Translation',
     translateRegex: ''
   }, () => {
     window.location.reload()
@@ -173,7 +173,7 @@ translateReset.addEventListener('click', () => {
 chrome.storage.sync.get({
   translateFrom: 'auto',
   translateTo: 'en',
-  translateLabel: '',
+  translateLabel: 'View Translation',
   translateRegex: ''
 }, (e) => {
   document.querySelector(`#from-${e.translateFrom}`).selected = true

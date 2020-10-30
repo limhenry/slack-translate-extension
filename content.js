@@ -35,7 +35,7 @@ const init = (eleName) => {
       translateButton.className = '___sgt-translate-button'
       translateButton.dataset.translateMessage = message.innerText
       translateButton.addEventListener('click', (e) => sgtTranslateMessage(e))
-      translateButton.textContent = translateConfig.translateLabel || 'Translate'
+      translateButton.textContent = translateConfig.translateLabel || 'View Translation'
       message.appendChild(translateButton)
     })
   })
@@ -49,7 +49,7 @@ const init = (eleName) => {
 chrome.storage.sync.get({
   translateFrom: 'auto',
   translateTo: 'en',
-  translateLabel: 'Translate',
+  translateLabel: 'View Translation',
   translateRegex: false
 }, (e) => {
   translateConfig = e

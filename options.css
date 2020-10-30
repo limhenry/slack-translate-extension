@@ -1,19 +1,44 @@
 * {
   box-sizing: border-box;
+  --primary-text-color: #202124;
+  --primary-background-color: #f8f9fa;
+  --primary-accent-color: #1a73e8;
+  --header-background-color: #3367d6;
+  --header-text-color: #fff;
+  --header-border-color: rgba(255, 255, 255, 0.1);
+  --card-background-color: #fff;
+  --dropdown-background-color: #f1f3f4;
+  --button-border-color: #dadce0;
+  --more-button-filter: invert(0);
+}
+@media (prefers-color-scheme: dark) {
+  * {
+    --primary-text-color: #e8eaed;
+    --primary-background-color: #202125;
+    --primary-accent-color: #8ab4f8;
+    --header-background-color: #292a2d;
+    --header-text-color: #e8eaed;
+    --header-border-color: rgba(255, 255, 255, 0.1);
+    --card-background-color: #292a2d;
+    --dropdown-background-color: #0000004d;
+    --button-border-color: #5f6368;
+    --more-button-filter: invert(1);
+  }
 }
 html,
 body {
   margin: 0;
   font-family: Roboto, system-ui, sans-serif;
-  color: #e8eaed;
-  background-color: #202125;
+  color: var(--primary-text-color);
+  background-color: var(--primary-background-color);
   font-size: 14px;
   padding-bottom: 24px;
 }
 header {
-  background-color: #292a2d;
+  background-color: var(--header-background-color);
+  color: var(--header-text-color);
   height: 56px;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  border-bottom: 1px solid var(--header-border-color);
   display: flex;
   align-items: center;
   padding: 0 16px;
@@ -47,7 +72,7 @@ header h1 {
   padding: 8px 0 4px;
 }
 .section .card {
-  background-color: #292a2d;
+  background-color: var(--card-background-color);
   border-radius: 4px;
   box-shadow: rgba(0, 0, 0, 0.3) 0px 1px 2px 0px, rgba(0, 0, 0, 0.15) 0px 1px 3px 1px;
 }
@@ -61,13 +86,15 @@ header h1 {
 }
 .section .card a.card-row {
   text-decoration: none;
-  color: #e8eaed;
+  color: var(--primary-text-color);
 }
 .section .card .card-row .flex {
   flex: 1;
 }
 .section .card .card-row .more {
   height: 20px;
+  opacity: 0.6;
+  filter: var(--more-button-filter);
 }
 .section .card .card-row input {
   height: 25px;
@@ -75,26 +102,26 @@ header h1 {
   outline: none;
   border: none;
   border-bottom: 1px solid rgb(154, 160, 166);
-  color: #e8eaed;
-  caret-color: #8ab4f8;
+  color: var(--primary-text-color);
+  caret-color: var(--primary-accent-color);
   position: relative;
   min-width: 200px;
   font-family: Roboto, system-ui, sans-serif;
   font-size: 13px;
 }
 .section .card .card-row input:focus {
-  border-bottom: 1px solid #8ab4f8;
+  border-bottom: 1px solid var(--primary-accent-color);
 }
 .section .card .card-row select {
   -webkit-appearance: none;
   min-width: 200px;
   padding: 6px 20px 6px 8px;
-  color: #e8eaed;
+  color: var(--primary-text-color);
   border: none;
   border-radius: 4px;
   background: url(./icons/arrow_down.svg) calc(100% - 8px) center no-repeat;
   background-size: 10px;
-  background-color: #0000004d;
+  background-color: var(--dropdown-background-color);
   height: 32px;
   font-family: Roboto, system-ui, sans-serif;
   font-size: 13px;
@@ -102,9 +129,9 @@ header h1 {
 .section .card .card-row button {
   height: 32px;
   background: transparent;
-  color: #8ab4f8;
+  color: var(--primary-accent-color);
   font-weight: 500;
-  border: 1px solid#5f6368;
+  border: 1px solid var(--button-border-color);
   border-radius: 4px;
   padding: 0 16px;
   cursor: pointer;
