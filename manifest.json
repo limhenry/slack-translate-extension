@@ -3,7 +3,7 @@
   "name": "Translate for Slack",
 	"short_name": "Translate for Slack",
 	"description": "Translate Slack message directly in the Slack web app.",
-	"version": "1.0.2",
+	"version": "1.0.3",
 	"offline_enabled": false,
 	"content_scripts": [
 		{
@@ -30,7 +30,10 @@
 		"storage"
 	],
 	"browser_action": {
-    "default_title": "Options"
+		"default_title": "Options",
+		"default_icon": {
+			"128": "icons/logo.png"
+		}
 	},
 	"background": {
     "scripts": ["background.js"],
