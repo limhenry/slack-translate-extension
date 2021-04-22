@@ -28,12 +28,27 @@
       <h2 class="header">Advanced Settings</h2>
       <div class="card">
         <div class="card-row">
-          <div class="flex">Translate Button Label (Optional)</div>
+          <div class="flex">(Optional) Translate Button Label</div>
           <input id="translate-label" type="text" />
         </div>
         <div class="card-row">
-          <div class="flex">Only Show Translate Button If Regex Is Matched (Optional)</div>
+          <div class="flex">
+            <span>(Optional) Only Show Translate Button If Regex Is Matched</span>
+            <span class="learn-more" id="show-regex-card"><br />Learn more</span>
+          </div>
           <input id="translate-regex" type="text" />
+        </div>
+        <div class="regex-card" hidden>
+          <div class="title"><b>Examples of Regex:</b></div>
+          <div><code>/([\u0e00-\u0e7f])/</code> : Show translate button if Thai character is found</div>
+          <div><code>/([\u1100-\u11ff])/</code> : Show translate button if Korean character is found</div>
+          <div><code>/([\u0b80-\u0bfe])/</code> : Show translate button if Tamil character is found</div>
+          <div><code>/([\u4e00-\u9fbf\u3040-\u309f\u30a0-\u30ff])/</code> : Show translate button if Japanese character is found</div>
+          <div class="more">More examples: <a
+            href="https://apps.timwhitlock.info/js/regex"
+            target="_blank"
+            rel="noopener noreferrer"
+          >apps.timwhitlock.info/js/regex</a></div>
         </div>
       </div>
     </div>
@@ -53,7 +68,7 @@
           <img src="./icons/48.png">
           <div>
             <div>Translate for Slack</div>
-            <div class="version">Version 1.0.3</div>
+            <div class="version">Version 1.0.4</div>
           </div>
         </div>
         <a

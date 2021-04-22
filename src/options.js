@@ -131,6 +131,7 @@ const translateTo = document.querySelector('#translate-to-dropdown')
 const translateLabel = document.querySelector('#translate-label')
 const translateRegex = document.querySelector('#translate-regex')
 const translateReset = document.querySelector('#translate-reset')
+const regexCard = document.querySelector('#show-regex-card')
 
 generateLanguageDropdown(translateFrom, 'from-')
 generateLanguageDropdown(translateTo, 'to-')
@@ -154,9 +155,19 @@ translateLabel.addEventListener('blur', (e) => {
 })
 
 translateRegex.addEventListener('blur', (e) => {
-  chrome.storage.sync.set({
-    translateRegex: e.target.value
-  })
+  try {
+    const match = e.target.value.match(new RegExp('^/(.*?)/([gimy]*)$'))
+    new RegExp(match[1], match[2])
+    e.target.removeAttribute('error')
+    chrome.storage.sync.set({
+      translateRegex: e.target.value
+    })
+  } catch (err) {
+    e.target.setAttribute('error', '')
+    chrome.storage.sync.set({
+      translateRegex: ''
+    })
+  }
 })
 
 translateReset.addEventListener('click', () => {
@@ -168,6 +179,11 @@ translateReset.addEventListener('click', () => {
   }, () => {
     window.location.reload()
   })
+})
+
+regexCard.addEventListener('click', (e) => {
+  document.querySelector('.regex-card').removeAttribute('hidden')
+  e.target.remove()
 })
 
 chrome.storage.sync.get({
