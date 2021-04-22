@@ -3,7 +3,7 @@
   "version": "1.0.4",
   "description": "Translate for Slack is a Chrome Extension that can translate Slack message directly in the Slack web app.",
   "scripts": {
-    "build": "mkdir -p build && zip build/build.zip src"
+    "build": "mkdir -p build && zip build/build.zip src/* src/icons/*"
   },
   "repository": {
     "type": "git",
