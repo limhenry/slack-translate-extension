@@ -1,9 +1,9 @@
 {
-	"manifest_version": 2,
+	"manifest_version": 3,
   "name": "Translate for Slack",
 	"short_name": "Translate for Slack",
 	"description": "Translate Slack message directly in the Slack web app.",
-	"version": "1.0.4",
+	"version": "1.0.5",
 	"offline_enabled": false,
 	"content_scripts": [
 		{
@@ -20,6 +20,9 @@
 			"all_frames": false
 		}
 	],
+	"host_permissions": [
+		"https://app.slack.com/client/*"
+	],
 	"icons": {
 		"16": "icons/16.png",
 		"48": "icons/48.png",
@@ -29,14 +32,13 @@
 	"permissions": [
 		"storage"
 	],
-	"browser_action": {
+	"action": {
 		"default_title": "Options",
 		"default_icon": {
 			"128": "icons/logo.png"
 		}
 	},
 	"background": {
-    "scripts": ["background.js"],
-    "persistent": true
+    "service_worker": "background.js"
 	}
 }

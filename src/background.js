@@ -1,5 +1,5 @@
-chrome.browserAction.setPopup({ popup:'' })
+chrome.action.setPopup({ popup:'' })
 
-chrome.browserAction.onClicked.addListener(()=>{
+chrome.action.onClicked.addListener(()=>{
   chrome.tabs.create({ url:'options.html' })
 })
