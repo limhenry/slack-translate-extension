@@ -15,7 +15,9 @@ const sgtTranslateMessage = (e) => {
   fetch(url).then((response) => {
     response.json()
       .then(data => {
-        e.target.textContent = data[0].map(e => e[0]).join(' ')
+        const translatedText = data[0].map(e => e[0]).join(' ')
+        const formattedTranslatedText = translatedText.replace('♣ ♣', '♣').replace(/♣{1,}/g, '\n').replace(/^\n/, '').replace(/\n$/, '')
+        e.target.textContent = formattedTranslatedText
         e.target.dataset.translateDone = true
         const translateAttribution = document.createElement('a')
         translateAttribution.className = '___sgt-translate-attribution'
@@ -24,6 +26,7 @@ const sgtTranslateMessage = (e) => {
         translateAttribution.rel = 'noopener noreferrer'
         translateAttribution.innerHTML = translateLogo
         e.target.appendChild(translateAttribution)
+        e.target.dataset.translateMessage = ''
       })
     })
 }
@@ -32,11 +35,18 @@ const init = (eleName) => {
   const view = document.querySelector(eleName)
   if (!view) return setTimeout(() => init(eleName), 3000)
   const observer = new MutationObserver(() => {
-    const messages = view.querySelectorAll('.p-rich_text_block')
+    const messages = [
+      ...view.querySelectorAll('.p-rich_text_block'),
+      ...view.querySelectorAll('.c-message_kit__attachments')
+    ]
     messages.forEach((message) => {
       if (message.dataset.translate) return
       message.dataset.translate = true
       const messageEle = message.cloneNode(true)
+      const preTexts = messageEle.querySelectorAll('.c-message_attachment_with_pretext')
+      preTexts.forEach((e) => e.remove())
+      const cMsgs = messageEle.querySelectorAll('.c-message_attachment')
+      cMsgs.forEach((e) => e.textContent.match(/^[\d]+ previous repl(y|ies)$/) && e.remove())
       const edited = messageEle.querySelector('.c-message__edited_label')
       edited && edited.remove()
       if (!messageEle.textContent) return
@@ -47,7 +57,8 @@ const init = (eleName) => {
       } catch (e) {}
       const translateButton = document.createElement('div')
       translateButton.className = '___sgt-translate-button'
-      translateButton.dataset.translateMessage = messageEle.innerText
+      const translateMessage = messageEle.innerHTML.replace(/(<([^>]+)>)/ig, '♣').replace(/♣{1,}/g, '♣').replace('♣ ♣', '♣')
+      translateButton.dataset.translateMessage = translateMessage
       translateButton.addEventListener('click', (e) => {
         sgtTranslateMessage(e)
       }, {
