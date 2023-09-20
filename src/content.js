@@ -32,13 +32,16 @@ const sgtTranslateMessage = (e) => {
 }
 
 const init = (eleName) => {
+  console.log('INIT eleName: ' + eleName)
   const view = document.querySelector(eleName)
+  console.log(' view: ' + view)
   if (!view) return setTimeout(() => init(eleName), 3000)
   const observer = new MutationObserver(() => {
     const messages = [
       ...view.querySelectorAll('.p-rich_text_block'),
       ...view.querySelectorAll('.c-message_kit__attachments')
     ]
+    console.log(' messages found: ' + messages.length)
     messages.forEach((message) => {
       if (message.dataset.translate) return
       message.dataset.translate = true
@@ -82,6 +85,7 @@ chrome.storage.sync.get({
   translateRegex: false
 }, (e) => {
   translateConfig = e
-  init('.p-workspace__primary_view')
-  init('.p-workspace__secondary_view')
+  init('.p-workspace__primary_view_body')
+  init('.p-view_contents--secondary')
+  init('.c-virtual_list__scroll_container')
 })
