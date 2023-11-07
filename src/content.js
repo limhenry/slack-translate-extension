@@ -82,6 +82,7 @@ chrome.storage.sync.get({
   translateRegex: false
 }, (e) => {
   translateConfig = e
-  init('.p-workspace__primary_view')
-  init('.p-workspace__secondary_view')
+  init('.p-workspace__primary_view_body')
+  init('.p-view_contents--secondary')
+  init('.c-virtual_list__scroll_container')
 })
