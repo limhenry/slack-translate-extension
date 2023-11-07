@@ -3,7 +3,7 @@
   "name": "Translate for Slack",
 	"short_name": "Translate for Slack",
 	"description": "Translate Slack message directly in the Slack web app.",
-	"version": "1.0.5",
+	"version": "1.0.6",
 	"offline_enabled": false,
 	"content_scripts": [
 		{
